@@ -29,31 +29,31 @@ public class SelectProductListCommand implements Command {
       String value1 = null;
       int pGender;
       String cName = null;
-      if(request.getParameter("cName")!=null) {
+      if(request.getParameter("cName") != null) {
     	  cName = request.getParameter("cName");
       }else {
     	  cName = (String) session.getAttribute("cName");
       }
       int value2 = 0;
-      if(request.getParameter("pGender")!=null) {
+      if(request.getParameter("pGender") != null) {
     	  pGender = Integer.parseInt(request.getParameter("pGender"));
       }else {
     	  pGender = (Integer) session.getAttribute("pGender");
       }
-      if(request.getParameter("var")!=null) {
+      if(request.getParameter("var") != null) {
     	  var = request.getParameter("var");
       }else {
     	  var = (String) session.getAttribute("var");
       }
       if(var.equals("pCompany")) {
-    	  if(request.getParameter("value")!=null) {
+    	  if(request.getParameter("value") != null) {
     		  value1 = request.getParameter("value");
     	  }else {
     		  value1 = (String) session.getAttribute("value");
     	  }
     	  session.setAttribute("value", value1);
       }else {
-    	  if(request.getParameter("value")!=null) {
+    	  if(request.getParameter("value") != null) {
     		  value2 = Integer.parseInt(request.getParameter("value"));
     	  }else {
     		  value2 = (Integer) session.getAttribute("value");
@@ -114,7 +114,6 @@ public class SelectProductListCommand implements Command {
       
       // beginRecord와 endRecord 로 분류된 list를 model에 담아준다.
       model.addAttribute("list", list);
-      // 다음 페이지로 넘어갈 때 어떤 제조회사인지를 확인하기 위해 pCompany를 모델에 넣어준다. 
       session.setAttribute("var", var);
       session.setAttribute("pGender", pGender);
       session.setAttribute("cName", cName);

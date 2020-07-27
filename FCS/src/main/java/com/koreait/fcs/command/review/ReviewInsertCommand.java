@@ -17,12 +17,11 @@ public class ReviewInsertCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		int pNo = Integer.parseInt(request.getParameter("pNo"));
-		
+
 		String mId = request.getParameter("mId");
 		String rTitle = request.getParameter("rTitle");
 		String rContent = request.getParameter("rContent");
@@ -45,9 +44,7 @@ public class ReviewInsertCommand implements Command {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
+
 	}
 
 }

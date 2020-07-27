@@ -26,16 +26,16 @@ public class LoginMemberCommand implements Command {
 		String mPw = request.getParameter("mPw");
 		MemberDAO mDAO = sqlSession.getMapper(MemberDAO.class);
 		MemberDTO loginDTO = mDAO.login(mId, mPw);
-		
+
 		HttpSession session = null;
 		try {
-			if(loginDTO!=null) {
+			if(loginDTO != null) {
 				session = request.getSession();
 				session.setAttribute("loginDTO", loginDTO); //로그인에 성공하면 회원정보가 session에 저장된다.
 			}else {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out;
-				
+
 				out = response.getWriter();
 				out.println("<script type='text/javascript'>");
 				out.println("alert('제출된 정보와 일치하는 회원이 없습니다.');");
@@ -44,7 +44,6 @@ public class LoginMemberCommand implements Command {
 				out.close();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

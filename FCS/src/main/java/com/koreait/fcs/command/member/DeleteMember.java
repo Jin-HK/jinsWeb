@@ -14,7 +14,7 @@ public class DeleteMember implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
+
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		int mNo = Integer.parseInt(request.getParameter("mNo"));

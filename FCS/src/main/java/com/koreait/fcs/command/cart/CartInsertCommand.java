@@ -27,7 +27,7 @@ public class CartInsertCommand implements Command {
 		OrderDAO oDAO = sqlSession.getMapper(OrderDAO.class);
 		CartDAO cDAO = sqlSession.getMapper(CartDAO.class);
 		
-		// 2. 같은 품목이 특정 회원의 장바구니에 있는지 확인한다. 
+		// 같은 품목이 특정 회원의 장바구니에 있는지 확인한다. 
 		CartDTO cDTO = oDAO.checkCartProduct(mId, cSize, pNo); // 같은 품목이 있으면 해당 데이터를 cDTO에 담아둔다.
 		if (cDTO != null) {
 			int cartNo = cDTO.getCartNo();

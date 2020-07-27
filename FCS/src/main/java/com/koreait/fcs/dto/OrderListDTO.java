@@ -3,22 +3,20 @@ package com.koreait.fcs.dto;
 import java.sql.Date;
 
 public class OrderListDTO {
-	
+
 	private int oNo;
 	private String oName,  oEmail, oPost, oAddr1, oAddr2, oAddr3;
 	private char oMobile1, oMobile2, oMobile3;
 	private Date oDate;
-	
+
 	private int cartNo, cartQuantity, cValidate;
 	private String mId, cSize;
-	
+
 	private int pNo, pPrice, pCategory, pGender, pStock1, pStock2, pStock3;
 	private String pName, pCompany, pThumbnail, pFilename, pDescription;
 	private Date pRegdate;
-	
-	public OrderListDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public OrderListDTO() {	}
 
 	public OrderListDTO(int oNo, String oName, String oEmail, String oPost, String oAddr1, String oAddr2, String oAddr3,
 			char oMobile1, char oMobile2, char oMobile3, Date oDate, int cartNo, int cartQuantity, int cValidate,
@@ -288,7 +286,7 @@ public class OrderListDTO {
 	public void setpRegdate(Date pRegdate) {
 		this.pRegdate = pRegdate;
 	}
-	
-	
-	
+
+
+
 }

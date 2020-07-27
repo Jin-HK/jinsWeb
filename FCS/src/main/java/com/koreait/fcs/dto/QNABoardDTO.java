@@ -6,10 +6,8 @@ public class QNABoardDTO {
 	int qNo, qRef, qStep, qDepth, qDelete, pNo;
 	String qTitle, qContent, qPw, mId;
 	Date qRegdate;
-	
-	public QNABoardDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public QNABoardDTO() {	}
 
 	public QNABoardDTO(int qNo, int qRef, int qStep, int qDepth, int qDelete, int pNo, String qTitle, String qContent,
 			String qPw, String mId, Date qRegdate) {
@@ -114,7 +112,7 @@ public class QNABoardDTO {
 	public void setqRegdate(Date qRegdate) {
 		this.qRegdate = qRegdate;
 	}
-	
-	
+
+
 }
 

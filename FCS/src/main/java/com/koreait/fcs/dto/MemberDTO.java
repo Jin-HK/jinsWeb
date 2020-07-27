@@ -6,41 +6,32 @@ public class MemberDTO {
 	private int mNo;
 	private String mId, mName, mPw, mMobile1, mMobile2, mMobile3, mEmail, mBirth, mPost, mAddr1, mAddr2, mAddr3, mValidate;
 	private Date mRegdate;
-	
-	public MemberDTO() {
-		// TODO Auto-generated constructor stub
-	}
 
+	public MemberDTO() {	}
 
 	public String getmAddr1() {
 		return mAddr1;
 	}
 
-
 	public void setmAddr1(String mAddr1) {
 		this.mAddr1 = mAddr1;
 	}
-
 
 	public String getmAddr2() {
 		return mAddr2;
 	}
 
-
 	public void setmAddr2(String mAddr2) {
 		this.mAddr2 = mAddr2;
 	}
-
 
 	public String getmAddr3() {
 		return mAddr3;
 	}
 
-
 	public void setmAddr3(String mAddr3) {
 		this.mAddr3 = mAddr3;
 	}
-
 
 	public MemberDTO(int mNo, String mId, String mName, String mPw, String mMobile1, String mMobile2, String mMobile3,
 			String mEmail, String mBirth, String mPost, String mAddr1, String mAddr2, String mAddr3, String mValidate, Date mRegdate) {
@@ -61,7 +52,6 @@ public class MemberDTO {
 		this.mValidate = mValidate;
 		this.mRegdate = mRegdate;
 	}
-
 
 	public int getmNo() {
 		return mNo;
@@ -160,6 +150,6 @@ public class MemberDTO {
 	public void setmRegdate(Date mRegdate) {
 		this.mRegdate = mRegdate;
 	}
-	
-	
+
+
 }

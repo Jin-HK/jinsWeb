@@ -7,9 +7,9 @@ public class NoticeDTO {
 	private int nNo, nHit;
 	private String mId, nTitle, nContent, mName;
 	private Date nRegdate;
-	public NoticeDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public NoticeDTO() {	}
+
 	public NoticeDTO(int nNo, String mId, int nHit, String nTitle, String nContent, Date nRegdate, String mName) {
 		super();
 		this.nNo = nNo;
@@ -62,5 +62,5 @@ public class NoticeDTO {
 	public void setmName(String mName) {
 		this.mName = mName;
 	}
-	
+
 }

@@ -20,11 +20,11 @@ import com.koreait.fcs.command.review.ReviewListCommand;
 
 @Controller
 public class ReviewController {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 	private Command reviewCommand;
-	   
+
 	@RequestMapping("reviewList")
 	public String reviewList(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -32,7 +32,7 @@ public class ReviewController {
 		reviewCommand.execute(sqlSession, model);
 		return "review/reviewListPage";
 	}
-	
+
 	@RequestMapping(value="insertReview", method=RequestMethod.POST)
 	public String insertReview(HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("request", request);
@@ -41,7 +41,7 @@ public class ReviewController {
 		reviewCommand.execute(sqlSession, model);
 		return "redirect:reviewList";
 	}
-	
+
 	@RequestMapping(value="insertReviewWithImage", method=RequestMethod.POST)
 	public String insertReviewWithImage(MultipartHttpServletRequest mr, Model model) {
 		model.addAttribute("mr", mr);
@@ -49,7 +49,7 @@ public class ReviewController {
 		reviewCommand.execute(sqlSession, model);
 		return "redirect:reviewList";
 	}
-	
+
 	@RequestMapping("deleteReview")
 	public String deleteReview(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -57,7 +57,7 @@ public class ReviewController {
 		reviewCommand.execute(sqlSession, model);
 		return "redirect:reviewList";
 	}
-	
+
 	@RequestMapping("reviewInsertPage")
 	public String reviewInsertPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("request", request);

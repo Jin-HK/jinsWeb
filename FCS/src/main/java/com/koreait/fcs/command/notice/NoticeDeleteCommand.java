@@ -25,7 +25,7 @@ public class NoticeDeleteCommand implements Command {
 		int result = nDAO.noticeDelete(nNo);
 		
 		model.addAttribute("page", page);
-		if(result>0) {
+		if(result > 0) {
 			
 		}else {
 			try {

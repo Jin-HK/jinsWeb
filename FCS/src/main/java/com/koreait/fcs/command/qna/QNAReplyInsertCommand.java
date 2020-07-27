@@ -27,20 +27,20 @@ public class QNAReplyInsertCommand implements Command {
 		String mId = request.getParameter("mId");
 		String page = request.getParameter("page");
 		int qNo = Integer.parseInt(request.getParameter("qNo"));
-		
+
 		QNABoardDAO qDAO = sqlSession.getMapper(QNABoardDAO.class);
 		QNABoardDTO qDTO = qDAO.selectByqNo(qNo);
 		int qRef = qDTO.getqRef();
 		int qDepth = qDTO.getqDepth()+1;
 		int qStep = qDTO.getqStep()+1;
-		
+
 		qDAO.updateqStep(qRef);
 		int result = qDAO.insertReply(pNo, qTitle, qPw, qContent, mId, qRef, qStep, qDepth);
 		model.addAttribute("pNo", pNo);
 		model.addAttribute("page", page);
-		
-		if(result>0) {
-		
+
+		if(result > 0) {
+
 		}else {
 			try {				
 				response.setContentType("text/html; charset=utf-8");

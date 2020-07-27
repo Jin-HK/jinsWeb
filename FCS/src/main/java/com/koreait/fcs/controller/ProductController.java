@@ -34,36 +34,35 @@ public class ProductController {
 	// Field
 	@Autowired
 	private SqlSession sqlSession;
-	
 	private Command productCommand;
-	
+
 	@RequestMapping("productInsertPage")
 	public String goUploadPage() {
 		return "product/productInsertPage";
 	}
-	
+
 	// 관리자 - 제품 업데이트 페이지로 이동
 	@RequestMapping("productUpdatePage")
 	public String goProductUpdatePage(HttpServletRequest request, Model model) {
-		
+
 		model.addAttribute("request", request);
 		productCommand = new SelectProductDetailCommand();
 		productCommand.execute(sqlSession, model);
 		return "product/productUpdatePage";
-		
+
 	}
-	
+
 	// 일반 사용자 - 제품 상세 페이지로 이동
 	@RequestMapping("productDetailViewPage")
 	public String goProductViewPage(HttpServletRequest request, Model model) {
-		
+
 		model.addAttribute("request", request);
 		productCommand = new SelectProductDetailCommand();
 		productCommand.execute(sqlSession, model);
 		return "product/productDetailViewPage";
-		
+
 	}
-	
+
 	// 제품 리스트 페이지
 	@RequestMapping("productListPage")
 	public String productListPage(HttpServletRequest request,Model model) {
@@ -72,8 +71,8 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "product/productListPage";
 	}
-	
-	
+
+
 	@RequestMapping(value="productInsert", method=RequestMethod.POST)
 	public String productInsert(MultipartHttpServletRequest mr, Model model) {
 		model.addAttribute("mr", mr);
@@ -95,8 +94,8 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "redirect:/";
 	}
-	
-	
+
+
 	@RequestMapping(value="productUpdate", method=RequestMethod.POST)
 	public String productUpdate(MultipartHttpServletRequest mr, Model model) {
 		model.addAttribute("mr", mr);
@@ -126,7 +125,7 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value="productDelete")
 	public String productDelete(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -134,13 +133,13 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "redirect:selectTotalProductList";
 	}
-	
+
 	@RequestMapping("prevPage")
 	public String prevPage(HttpServletRequest request) {
 		String prevPage = request.getParameter("prevPage");
 		return "redirect:"+prevPage;
 	}
-	
+
 	@RequestMapping("selectTotalProductList")
 	public String selectTotalProductList(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -148,7 +147,7 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "product/totalProductListPage";
 	}
-	
+
 	@RequestMapping("goUpdateProductQuantityPage")
 	public String goUpdateProductQuantityPage(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		model.addAttribute("request", request);
@@ -156,7 +155,7 @@ public class ProductController {
 		productCommand.execute(sqlSession, model);
 		return "product/updateProductQuantityPage";
 	}
-	
+
 	@RequestMapping("updateProductQuantity")
 	public void updateProductQuantity(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		model.addAttribute("request", request);

@@ -18,18 +18,17 @@ public class NoticeListCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		String page = request.getParameter("page");
-		if(page==null || page.isEmpty()) {
-			page="1";
+		if(page == null || page.isEmpty()) {
+			page = "1";
 		}
 		
-		int recordPerPage = 10; //board, bbs, guestbook, member 등 모두 
-		int beginRecord = (Integer.parseInt(page)-1)*recordPerPage+1;
-		int endRecord = beginRecord+recordPerPage-1;
+		int recordPerPage = 10; 
+		int beginRecord = (Integer.parseInt(page) - 1) * recordPerPage + 1;
+		int endRecord = beginRecord + recordPerPage - 1;
 		
 		NoticeDAO nDAO = sqlSession.getMapper(NoticeDAO.class);
 		List<NoticeDTO> list = nDAO.noticeList(beginRecord, endRecord);

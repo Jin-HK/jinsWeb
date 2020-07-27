@@ -3,15 +3,13 @@ package com.koreait.fcs.dto;
 import java.sql.Date;
 
 public class OrderDTO {
-	
+
 	private int oNo, cartNo;
 	private String mId, oName,  oEmail, oPost, oAddr1, oAddr2, oAddr3;
 	private char oMobile1, oMobile2, oMobile3;
 	private Date oDate;
-	
-	public OrderDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public OrderDTO() {	}
 
 	public OrderDTO(int oNo, int cartNo, String mId, String oName, String oEmail, String oPost, String oAddr1,
 			String oAddr2, String oAddr3, char oMobile1, char oMobile2, char oMobile3, Date oDate) {
@@ -135,10 +133,10 @@ public class OrderDTO {
 		this.oDate = oDate;
 	}
 
-	
-	
 
-	
-	
-	
+
+
+
+
+
 }

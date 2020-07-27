@@ -13,10 +13,10 @@ public class ProductUpdateWithNoImageCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		
+
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) map.get("mr");
-		
+
 		int pNo = Integer.parseInt(mr.getParameter("pNo"));
 		String pName = mr.getParameter("pName");
 		int pPrice = Integer.parseInt(mr.getParameter("pPrice"));
@@ -27,11 +27,11 @@ public class ProductUpdateWithNoImageCommand implements Command {
 		int pStock3 = Integer.parseInt(mr.getParameter("pStock3"));	// l사이즈
 		String pCompany = mr.getParameter("pCompany");
 		String pDescription = mr.getParameter("pDescription");
-		
+
 		mr.setAttribute("pCategory", pCategory);
-			
+
 		ProductDAO pDAO = sqlSession.getMapper(ProductDAO.class);
-		
+
 		pDAO.productUpdateWithNoImage(pName, pPrice, pCategory, pGender, pCompany, pDescription, pStock1, pStock2, pStock3, pNo);
 		model.addAttribute("pCategory", pCategory);
 	}

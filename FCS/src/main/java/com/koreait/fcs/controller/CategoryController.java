@@ -24,13 +24,7 @@ public class CategoryController {
 	
 	@RequestMapping("/")
 	public String goIndex(Model model) {
-		/*
-		 * new SelectMaleBrandListCommand().execute(sqlSession, model); new
-		 * SelectFemaleBrandListCommand().execute(sqlSession, model); new
-		 * SelectMaleCategoryListCommand().execute(sqlSession, model); new
-		 * SelectFemaleCategoryListCommand().execute(sqlSession, model); new
-		 * SelectEtcListCommand().execute(sqlSession, model);
-		 */
+	
 		new SelectNewProductCommand().execute(sqlSession, model);
 		return "index";
 	}
@@ -79,8 +73,6 @@ public class CategoryController {
 		categoryCommand.execute(sqlSession, model);
 		return "redirect:categoryListPage";
 	}*/
-	
-	
 	
 	/*
 	 * // 남성 브랜드별 카테고리 가져오기

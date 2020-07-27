@@ -15,7 +15,6 @@ public interface MemberDAO {
 	//회원가입
 	public int signUpMember(String mId, String mName, String mPw, String mMobile1, String mMobile2, String mMobile3, String mEmail, String mBirth, String mPost, String mAddr1, String mAddr2, String mAddr3);
 	
-	
 	//로그인
 	public MemberDTO login(String mId, String mPw);
 	

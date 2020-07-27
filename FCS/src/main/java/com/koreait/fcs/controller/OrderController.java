@@ -27,6 +27,7 @@ public class OrderController {
 	private SqlSession sqlSession;
 	private Command command;
 	
+	// 바로 주문하기
 	@RequestMapping("orderPage")
 	public String goOrderPage(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
 		model.addAttribute("request", request);
@@ -35,6 +36,7 @@ public class OrderController {
 		return "order/orderPage";
 	} 
 	
+	// 장바구니에서 주문하기
 	@RequestMapping("orderPageFromCart")
 	public String goOrderPageFromCart(HttpServletRequest request, Model model){
 		model.addAttribute("request", request);
@@ -43,24 +45,23 @@ public class OrderController {
 		return "order/orderPageFromCart";
 	}
 	
+	// 그냥 결제하기
 	@RequestMapping(value="submitOrder", method=RequestMethod.POST)
 	public void submitOrder(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		model.addAttribute("request", request);
 		SubmitOrderCommand command = new SubmitOrderCommand();
 		command.execute(sqlSession, response, model);
-		//return "redirect:selectMyOrderList";
-		//return "order/orderFinishPage"; // 결제 완료 페이지로 이동, 마이페이지에서 보는 주문내역과는 별도로 생성
 	}
 	
+	// 장바구니에서 결제하기
 	@RequestMapping(value="submitOrderFromCart", method=RequestMethod.POST)
 	public void submitOrderFromCart(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		model.addAttribute("request", request);
 		SubmitOrderFromCartCommand command = new SubmitOrderFromCartCommand();
 		command.execute(sqlSession, response, model);
-		//return "redirect:selectMyOrderList";
-		//return "order/orderFinishPage"; // 결제 완료 페이지로 이동, 마이페이지에서 보는 주문내역과는 별도로 생성
 	}
 	
+	// 나의 주문내역 확인
 	@RequestMapping("selectMyOrderList")
 	public String selectMyOrderList(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -69,6 +70,7 @@ public class OrderController {
 		return "order/selectMyOrderListPage";
 	}
 	
+	// 쇼핑몰 전체 주문 내역 확인
 	@RequestMapping("selectTotalOrderList")
 	public String selectTotalOrderList(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);

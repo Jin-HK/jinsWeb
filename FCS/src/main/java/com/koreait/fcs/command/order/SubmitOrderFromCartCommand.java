@@ -7,36 +7,22 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.fcs.dao.OrderDAO;
 import com.koreait.fcs.dto.CartListDTO;
-import com.koreait.fcs.dto.MemberDTO;
 
 // 결제하기를 눌렀을 때
 public class SubmitOrderFromCartCommand {
 
 	public void execute(SqlSession sqlSession, HttpServletResponse response, Model model) throws IOException {
 		
-		// request 불러오기
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		OrderDAO oDAO = sqlSession.getMapper(OrderDAO.class);
 		
-		// session에서 로그인 정보를 받아온다. 
-		 // loginDTO 로그인 정보가 저장되어 있을 경우 session에서 해당 정보 불러옴
-		// session에서 로그인 정보를 받아온다. 
-		/*
-		 * HttpSession session = request.getSession(); MemberDTO loginDTO =
-		 * (MemberDTO)session.getAttribute("loginDTO"); // loginDTO 로그인 정보가 저장되어 있을 경우
-		 * session에서 해당 정보 불러옴 // loginDTO 로그인 정보가 저장되어 있을 경우 session에서 해당 정보 불러옴 String
-		 * mId = loginDTO.getmId();
-		 */
-		//String mId = request.getParameter("mId");
-		//String totalPrice = request.getParameter("total");
 		// 주문자 정보 저장하기
 		String mId = request.getParameter("mId");
 		String mName = request.getParameter("mName");
@@ -71,7 +57,7 @@ public class SubmitOrderFromCartCommand {
 			PrintWriter out = response.getWriter();
 			out.println("<script type='text/javascript'>");
 			out.println("alert('결제가 완료되었습니다.');");
-			out.println("location.href='selectMyOrderList?mId="+mId+"&mName="+mName+"'");
+			out.println("location.href='selectMyOrderList?mId=" + mId + "&mName=" + mName + "'");
 			out.println("</script>");
 			out.close();
 		} else {

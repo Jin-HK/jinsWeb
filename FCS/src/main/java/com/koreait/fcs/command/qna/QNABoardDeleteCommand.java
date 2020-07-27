@@ -16,7 +16,6 @@ public class QNABoardDeleteCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
@@ -27,17 +26,17 @@ public class QNABoardDeleteCommand implements Command {
 		int result = qDAO.qnaBoardDelete(qNo, -1);
 		model.addAttribute("pNo", pNo);
 		model.addAttribute("page", page);
-		if(result>0) {
-			
+		if(result > 0) {
+
 		}else {
 			try {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script type='text/javascript'>");
-			out.println("alert('게시글이 삭제되지 않았습니다.);'");
-			out.println("history.back();");
-			out.println("</script>");
-			out.close();
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script type='text/javascript'>");
+				out.println("alert('게시글이 삭제되지 않았습니다.);'");
+				out.println("history.back();");
+				out.println("</script>");
+				out.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

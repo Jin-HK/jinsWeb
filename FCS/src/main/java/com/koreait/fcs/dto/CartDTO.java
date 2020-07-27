@@ -1,13 +1,11 @@
 package com.koreait.fcs.dto;
 
 public class CartDTO {
-	
+
 	private int cartNo, pNo, cartQuantity, cValidate;
 	private String mId, cSize;
-	
-	public CartDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public CartDTO() {	}
 
 	public CartDTO(int cartNo, int pNo, int cartQuantity, int cValidate, String mId, String cSize) {
 		super();
@@ -69,5 +67,5 @@ public class CartDTO {
 
 
 
-	
+
 }

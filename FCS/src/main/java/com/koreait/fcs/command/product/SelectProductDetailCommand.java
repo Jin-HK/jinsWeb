@@ -15,18 +15,14 @@ public class SelectProductDetailCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		
-			
-			Map<String , Object> map = model.asMap();
-			HttpServletRequest request = (HttpServletRequest)map.get("request");
-			int pNo = Integer.parseInt(request.getParameter("pNo"));
-			
-			ProductDAO pDAO = sqlSession.getMapper(ProductDAO.class);
-			ProductDTO pDTO = pDAO.selectProductBypNo(pNo);
-			model.addAttribute("pDTO", pDTO);
-			
-			
-		
+
+		Map<String , Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
+
+		ProductDAO pDAO = sqlSession.getMapper(ProductDAO.class);
+		ProductDTO pDTO = pDAO.selectProductBypNo(pNo);
+		model.addAttribute("pDTO", pDTO);
 
 	}
 

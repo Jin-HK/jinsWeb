@@ -13,7 +13,7 @@ public class ListMember implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
+
 		MemberDAO mDAO = sqlSession.getMapper(MemberDAO.class);
 		ArrayList<MemberDTO> list = mDAO.memberList();
 		model.addAttribute("list", list);

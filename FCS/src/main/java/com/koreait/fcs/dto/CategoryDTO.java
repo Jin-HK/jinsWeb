@@ -4,19 +4,13 @@ public class CategoryDTO {
 	private int cNo;
 	private String cName;
 	
-	public CategoryDTO() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+	public CategoryDTO() {	}
 	
 	public CategoryDTO(int cNo, String cName) {
 		super();
 		this.cNo = cNo;
 		this.cName = cName;
 	}
-
-
 
 	public int getcNo() {
 		return cNo;

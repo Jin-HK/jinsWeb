@@ -26,45 +26,30 @@ public class ReviewInsertWithImageCommand implements Command {
 		String originFilename = file.getOriginalFilename();
 		String extName = originFilename.substring(originFilename.lastIndexOf(".")+1);
 		String saveFilename = null;
-		
+
 		try {
-			
-			// 1) 저장할 파일 이름 만들기
-			// 파일명 중복 방지 대책으로 서버에 저장할 파일의 이름에 업로드 시간을 추가한다.
-			// 서버에 저장될 파일명 : 원래파일명_업로드시간.확장자
-			// 원래파일명 : originFilename.subString(0, originFilename.lastIndexOf("."))
-			// 업로드시간 : System.currentTimeMillis()
+
 			saveFilename = originFilename.substring(0,originFilename.lastIndexOf("."))+
 					"_"+System.currentTimeMillis()+
 					"."+extName;
-			
-			//2) 업로드
-			
-			//2-1) 파일이 저장될 서버 내 경로를 알아낸다.
+
 			String realPath = mr.getSession().getServletContext().getRealPath("/resources/storage");
-			
-			//2-2) /resources/storage 경로가 존재하지 않으면 필요한 경로(디렉토리)를 만든다.
-			//new File(경로) : 경로로 디렉토리만 사용되면 디렉토리로 인식한다.
+
 			File directory = new File(realPath);
 			if(!directory.exists()) {
-				directory.mkdirs(); //mkdirs (하위 디렉토리를 모두 만든다.)
+				directory.mkdirs(); 
 			}
-			//2-3) 서버에 저장할 파일을 만든다.
-			File saveFile = new File(realPath, saveFilename); //(경로, 파일명)
-			
-			//2-4) 업로드한다.
+			File saveFile = new File(realPath, saveFilename); 
+
 			file.transferTo(saveFile);
-			
-			//3) DB에 저장
-			// iWriter, iTitle, iContent, saveFilename
+
 			ReviewDAO rDAO = sqlSession.getMapper(ReviewDAO.class);
 			rDAO.reviewInsertWithImage(pNo, rTitle, rContent, mId, rScore, saveFilename);
 			model.addAttribute("pNo",pNo);
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 }

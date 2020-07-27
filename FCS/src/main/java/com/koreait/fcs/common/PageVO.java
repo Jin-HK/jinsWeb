@@ -2,8 +2,6 @@ package com.koreait.fcs.common;
 
 public class PageVO {
 
-	// Field
-	
 	// 게시물 : record
 	// 페이지 : page
 	// 블록   : block

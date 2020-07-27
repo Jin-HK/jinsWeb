@@ -19,7 +19,7 @@ public class EmailAuthCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
+
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
@@ -29,7 +29,7 @@ public class EmailAuthCommand implements Command {
 		MemberDAO mDAO = sqlSession.getMapper(MemberDAO.class);
 		MemberDTO mDTO = mDAO.findPw(mId, mEmail);
 		long authKey;
-		if(mDTO!=null) {
+		if(mDTO != null) {
 			try {
 					//SimpleMailMessage 클래스가 이메일 내용을 작성한다.
 					SimpleMailMessage message = new SimpleMailMessage();

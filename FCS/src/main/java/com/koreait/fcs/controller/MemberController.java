@@ -30,15 +30,7 @@ import com.koreait.fcs.dto.MemberDTO;
 public class MemberController {
 	@Autowired
 	private SqlSession sqlSession;
-	private Command memberCommand; //@Autowired로 처리되는 대상이 아니다
-	
-	/*
-	//단순이동
-	@RequestMapping("/")
-	public String goIndex() {
-		return "index";
-	}
-	*/
+	private Command memberCommand; 
 	
 	@RequestMapping("index")
 	public String index() {
@@ -89,10 +81,8 @@ public class MemberController {
 		return "member/adminPage";
 	}
 	
-	
-	
-	
 	//ajax
+	@SuppressWarnings("unchecked")
 	//아이디 중복 조회
 	@ResponseBody
 	@RequestMapping(value="idCheck", produces="application/json; charset=utf-8", method=RequestMethod.POST)
@@ -110,6 +100,7 @@ public class MemberController {
 	
 	
 	//이메일 중복 조회
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value="emailCheck", produces="application/json; charset=utf-8", method=RequestMethod.POST)
 	public String emailCheck(@RequestParam("mEmail") String mEmail) {
@@ -124,6 +115,7 @@ public class MemberController {
 		return obj.toJSONString();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value="signUp", produces="application/json; charset=utf-8", method=RequestMethod.POST)
 	public String sigUp(HttpServletRequest request) {
@@ -142,7 +134,7 @@ public class MemberController {
 		String mAddr3 = request.getParameter("mAddr3");
 		MemberDAO mDAO = sqlSession.getMapper(MemberDAO.class);
 		int result = mDAO.signUpMember(mId, mName, mPw, mMobile1, mMobile2, mMobile3, mEmail, mBirth, mPost, mAddr1, mAddr2, mAddr3);
-		if(result>0) {
+		if(result > 0) {
 			obj.put("result", "SUCCESS");
 		}else {
 			obj.put("result", "FAIL");			
@@ -174,7 +166,7 @@ public class MemberController {
 		int result = mDAO.updateMemberPw(mPw, mId);
 		HttpSession session = request.getSession();
 		String responseText = null;
-		if(result>0) {
+		if(result > 0) {
 			session.invalidate();
 			responseText = "SUCCESS";
 		}else {
@@ -183,6 +175,7 @@ public class MemberController {
 		return responseText;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value="updateMember", produces="application/json; charset=utf-8", method=RequestMethod.POST)
 	public String updateMember(HttpServletRequest request, Model model) {
@@ -200,7 +193,7 @@ public class MemberController {
 		String mAddr3 = request.getParameter("mAddr3");
 		MemberDAO mDAO = sqlSession.getMapper(MemberDAO.class);
 		int result = mDAO.updateMember(mName, mMobile1, mMobile2, mMobile3, mEmail, mBirth, mPost, mAddr1, mAddr2, mAddr3, mId);
-		if(result>0) {
+		if(result > 0) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("loginDTO");
 			MemberDTO loginDTO = mDAO.selectBymId(mId);
@@ -239,7 +232,7 @@ public class MemberController {
 	}
 	
 	@Autowired
-	private JavaMailSender mailSender; //root-context.xml의 빈 자동 생성
+	private JavaMailSender mailSender; 
 	
 	@RequestMapping(value="emailAuth", method=RequestMethod.POST)
 	public String emailAuth(HttpServletRequest request, HttpServletResponse response, Model model) {

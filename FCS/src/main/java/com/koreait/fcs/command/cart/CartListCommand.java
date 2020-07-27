@@ -24,15 +24,15 @@ public class CartListCommand implements Command {
 		CartDAO pDAO = sqlSession.getMapper(CartDAO.class);
 		ArrayList<ProductDTO> list = pDAO.selectBymId(mId);
 		
-		int total=0;
+		int totalPrice = 0;
 		for (ProductDTO productDTO : list) {
-			total+=(productDTO.getpPrice() * productDTO.getCartQuantity());
+			totalPrice+=(productDTO.getpPrice() * productDTO.getCartQuantity());
 		}
 		
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());
 		model.addAttribute("mId", mId);
-		model.addAttribute("total", total);
+		model.addAttribute("total", totalPrice);
 		
 	}
 

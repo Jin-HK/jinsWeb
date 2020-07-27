@@ -17,7 +17,6 @@ public class ReviewInsertCheckCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
@@ -40,7 +39,7 @@ public class ReviewInsertCheckCommand implements Command {
 				e.printStackTrace();
 			}
 		} else {
-			
+
 		}
 	}
 

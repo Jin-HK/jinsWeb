@@ -18,27 +18,26 @@ public class ReviewListCommand implements Command {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		int pNo = Integer.parseInt(request.getParameter("pNo"));
 		
 		String page1 = request.getParameter("page1");
-		if(page1==null || page1.isEmpty()) {
-			page1="1";
+		if(page1 == null || page1.isEmpty()) {
+			page1 = "1";
 		}
 		String page2 = request.getParameter("page2");
-		if(page2==null || page2.isEmpty()) {
-			page2="1";
+		if(page2 == null || page2.isEmpty()) {
+			page2 = "1";
 		}
 		
-		int recordPerPage1 = 5; //board, bbs, guestbook, member 등 모두 
-		int beginRecord1 = (Integer.parseInt(page1)-1)*recordPerPage1+1;
-		int endRecord1 = beginRecord1+recordPerPage1-1;
+		int recordPerPage1 = 5; 
+		int beginRecord1 = (Integer.parseInt(page1) - 1) * recordPerPage1 + 1;
+		int endRecord1 = beginRecord1 + recordPerPage1 - 1;
 
-		int recordPerPage2 = 5; //board, bbs, guestbook, member 등 모두 
-		int beginRecord2 = (Integer.parseInt(page2)-1)*recordPerPage2+1;
-		int endRecord2 = beginRecord2+recordPerPage2-1;
+		int recordPerPage2 = 5; 
+		int beginRecord2 = (Integer.parseInt(page2) - 1) * recordPerPage2 + 1;
+		int endRecord2 = beginRecord2+recordPerPage2 - 1;
 		
 		ReviewDAO rDAO = sqlSession.getMapper(ReviewDAO.class);
 		List<ReviewDTO> list1 = rDAO.reviewList(beginRecord1, endRecord1, pNo); //사진이 없는 리뷰

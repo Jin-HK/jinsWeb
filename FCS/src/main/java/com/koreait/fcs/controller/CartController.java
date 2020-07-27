@@ -19,15 +19,12 @@ import com.koreait.fcs.dao.CartDAO;
 
 @Controller
 public class CartController {
-	
+
 	// Field
 	@Autowired
 	private SqlSession sqlSession;
 	private Command cartCommand;
 
-	/*
-	 * @RequestMapping("/") public String goIndex() { return "index"; }
-	 */
 	// List
 	@RequestMapping("cartListPage")
 	public String cartListPage(HttpServletRequest request, Model model) {
@@ -36,7 +33,7 @@ public class CartController {
 		cartCommand.execute(sqlSession, model);
 		return "cart/cartListPage";
 	}
-	 
+
 	// Delete
 	@RequestMapping("cartDelete")
 	public String cartDelete(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -46,8 +43,9 @@ public class CartController {
 		cartCommand.execute(sqlSession, model);
 		return "redirect:cartListPage";
 	}
-	
+
 	// quantityDown
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping("quantityDown")
 	public String quantityUp(HttpServletRequest request) {
@@ -71,6 +69,7 @@ public class CartController {
 	}
 
 	// quantityUp
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping("quantityUp")
 	public String quantityDown(HttpServletRequest request) {
@@ -120,7 +119,7 @@ public class CartController {
 		}
 		return obj.toJSONString();
 	}
-	
+
 	// cartInsert
 	@RequestMapping("cartInsert")
 	public String cartInsert(HttpServletRequest request, Model model) {
@@ -129,49 +128,49 @@ public class CartController {
 		cartCommand.execute(sqlSession, model);
 		return "redirect:cartListPage";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,10 +6,8 @@ public class ReviewDTO {
 	int rNo, pNo, rScore;
 	String mId, rTitle, rContent, rFilename;
 	Date rRegdate;
-	
-	public ReviewDTO() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public ReviewDTO() {	}
 
 	public ReviewDTO(int rNo, int pNo, int rScore, String mId, String rTitle, String rContent, String rFilename,
 			Date rRegdate) {
@@ -87,6 +85,6 @@ public class ReviewDTO {
 	public void setrRegdate(Date rRegdate) {
 		this.rRegdate = rRegdate;
 	}
-	
-	
+
+
 }

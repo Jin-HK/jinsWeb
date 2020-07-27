@@ -3,18 +3,14 @@ package com.koreait.fcs.dto;
 import java.sql.Date;
 
 public class ProductDTO {
-	
+
 	// Field
 	private int pNo, pPrice, pCategory, pGender, pStock1, pStock2, pStock3, cartNo, cartQuantity, cValidate;
 	private String pName, pCompany, pThumbnail, pFilename, pDescription, cSize;
 	private Date pRegdate;
-	
-	// Constructor
-	public ProductDTO() {
-		// TODO Auto-generated constructor stub
-	}
 
-	
+	// Constructor
+	public ProductDTO() {	}
 
 	public ProductDTO(int pNo, int pPrice, int pCategory, int pGender, int pStock1, int pStock2, int pStock3,
 			int cartNo, int cartQuantity, int cValidate, String pName, String pCompany, String pThumbnail,
@@ -38,8 +34,6 @@ public class ProductDTO {
 		this.cSize = cSize;
 		this.pRegdate = pRegdate;
 	}
-
-
 
 	public int getpNo() {
 		return pNo;
@@ -193,9 +187,9 @@ public class ProductDTO {
 		this.cSize = cSize;
 	}
 
-	
-	
-	
-	
-	
+
+
+
+
+
 }

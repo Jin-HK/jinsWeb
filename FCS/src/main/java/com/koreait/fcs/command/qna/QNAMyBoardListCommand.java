@@ -25,23 +25,23 @@ public class QNAMyBoardListCommand implements Command {
 		if (page == null || page.isEmpty()) {
 			page = "1";
 		}
-		int recordPerPage = 10;  // board, bbs, guestbook, member 등 모두 다른 값을 줄 수 있다.
+		int recordPerPage = 10;  
 		int beginRecord = (Integer.parseInt(page) - 1) * recordPerPage + 1;
 		int endRecord = beginRecord + recordPerPage - 1;
-		
+
 		String mId = request.getParameter("mId");
-		
+
 		QNABoardDAO qDAO = sqlSession.getMapper(QNABoardDAO.class);
 		List<QNABoardDTO> list = qDAO.qnaMyBoardList(beginRecord, endRecord, pNo, mId);
 		int totalRecord = qDAO.getMyTotalRecord(pNo, mId);
 		String pageView = QNAMyPageMaker.getPageView("myBoardListPage", Integer.parseInt(page), recordPerPage, totalRecord, pNo, mId);
-		
+
 		model.addAttribute("page", page);
 		model.addAttribute("list", list);
 		model.addAttribute("totalRecord", totalRecord);
 		model.addAttribute("pageView", pageView);
 		model.addAttribute("pNo", pNo);
-		
+
 		HttpSession session = request.getSession();
 		session.removeAttribute("open");
 	}
