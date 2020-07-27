@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.QNABoardDAO">
+	<select id="qnaBoardList" resultType="com.koreait.fcs.dto.QNABoardDTO">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.* FROM C_QNA Q, C_MEMBER M 
+		WHERE Q.MID = M.MID
+		AND M.MVALIDATE = '0'
+		AND Q.PNO = #{param3}
+		ORDER BY Q.QREF DESC, Q.QDEPTH ASC, Q.QSTEP DESC) A)
+		WHERE RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="getTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM C_QNA Q, C_MEMBER M
+		WHERE Q.MID = M.MID
+		AND M.MVALIDATE = '0'
+		AND Q.PNO = #{param1}
+	</select>
+	
+	<insert id="qnaBoardInsert">
+		INSERT INTO C_QNA (QNO, QREF, QSTEP, QDEPTH, QDELETE, QTITLE, QCONTENT, QPW, MID, PNO, QREGDATE)
+		VALUES (C_QNA_SEQ.NEXTVAL, C_QNA_SEQ.CURRVAL, 0, 0, 0, #{param2}, #{param4}, #{param3}, #{param5}, #{param1}, SYSDATE)
+	</insert>
+	
+	<select id="selectByqNo" resultType="com.koreait.fcs.dto.QNABoardDTO">
+		SELECT * FROM C_QNA
+		WHERE QNO = #{param1}
+	</select>
+	
+	<update id="qnaBoardDelete">
+		UPDATE C_QNA
+		SET QDELETE = #{param2}
+		WHERE QNO = #{param1}
+	</update>
+	
+	<update id="updateqStep">
+		UPDATE C_QNA
+		SET QSTEP = QSTEP+1
+		WHERE QREF = #{param1} AND QDEPTH > 0
+	</update>
+	
+	<insert id="insertReply">
+		INSERT INTO C_QNA (QNO, QREF, QSTEP, QDEPTH, QDELETE, QTITLE, QCONTENT, QPW, MID, PNO, QREGDATE)
+		VALUES (C_QNA_SEQ.NEXTVAL, #{param6}, #{param7}, #{param8}, 0, #{param2}, #{param4}, #{param3}, #{param5}, #{param1}, SYSDATE)
+	</insert>
+	
+	<select id="qnaMyBoardList" resultType="com.koreait.fcs.dto.QNABoardDTO">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM C_QNA WHERE PNO = #{param3} AND MID = #{param4} ORDER BY QREF DESC, QDEPTH ASC, QSTEP DESC) A)
+		WHERE RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="getMyTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM C_QNA
+		WHERE PNO = #{param1} AND MID = #{param2}
+	</select>
+</mapper>
+
+
+

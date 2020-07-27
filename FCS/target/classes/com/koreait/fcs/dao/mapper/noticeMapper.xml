@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.NoticeDAO">
+	<select id="noticeList" resultType="com.koreait.fcs.dto.NoticeDTO">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
+		SELECT C.*, M.MNAME 
+		FROM C_NOTICE C, C_MEMBER M
+		WHERE C.MID = M.MID
+		ORDER BY C.NNO DESC) A)
+		WHERE RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="getTotalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM C_NOTICE
+	</select>
+	
+	<insert id="insertNotice">
+		INSERT INTO C_NOTICE (NNO, NTITLE, NCONTENT, NHIT, MID, NREGDATE)
+		VALUES (BOARD_SEQ.NEXTVAL, #{param1}, #{param2}, 0, #{param3}, SYSDATE)
+	</insert>
+	
+	<select id="noticeView" resultType="com.koreait.fcs.dto.NoticeDTO">
+		SELECT C.*, M.MNAME 
+		FROM C_NOTICE C, C_MEMBER M
+		WHERE C.MID = M.MID 
+		AND NNO = #{param1}
+	</select>
+	
+	<update id="updatenHit">
+		UPDATE C_NOTICE
+		SET NHIT = NHIT + 1
+		WHERE NNO = #{param1}
+	</update>
+	
+	<delete id="noticeDelete">
+		DELETE FROM C_NOTICE
+		WHERE NNO = #{param1}
+	</delete>
+	
+	<select id="queryNoticeList" parameterType="Map" resultType="com.koreait.fcs.dto.NoticeDTO">
+		SELECT * 
+		FROM (SELECT ROWNUM RN, A.*
+			  FROM (SELECT * 
+			  		FROM C_NOTICE
+			  		<if test="column=='NTITLE'">WHERE NTITLE LIKE '%' || #{query} || '%'</if>
+			  		<if test="column=='NCONTENT'">WHERE NCONTENT LIKE '%' || #{query} || '%'</if>
+			  		<if test="column=='BOTH'">WHERE NTITLE LIKE '%' || #{query} || '%' OR NCONTENT LIKE '%' || #{query} || '%'</if>
+			  		ORDER BY NNO DESC) A)
+		WHERE RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<select id="getQueryRecord" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM C_NOTICE
+		<if test="column=='NTITLE'">WHERE NTITLE LIKE '%' || #{query} || '%'</if>
+		<if test="column=='NCONTENT'">WHERE NCONTENT LIKE '%' || #{query} || '%'</if>
+		<if test="column=='BOTH'">WHERE NTITLE LIKE '%' || #{query} || '%' OR NCONTENT LIKE '%' || #{query} || '%'</if>
+	</select>
+	
+</mapper>
+
+
+

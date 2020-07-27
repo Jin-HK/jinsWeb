@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+.wrap {
+	
+	box-sizing: border-box;
+	width: auto;
+	margin-top: 10px;
+}
+
+
+
+.head {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	font-size: 20px;
+}
+
+.productList {
+	margin: auto;
+	width: auto;
+}
+
+.pt {
+	margin: auto;
+	width: 1000px;
+}
+
+.pt th {
+	padding: 10px;
+	font-size: 19px;
+	background-color: black;
+	color: white;
+}
+
+.pt tbody td:nth-of-type(1) {
+	text-align: center;
+    width: 20%;
+    padding: 10px;
+}
+
+.pt tbody td:nth-of-type(2) {
+    width: 28%;
+    text-align: left;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(3) {
+    width: 15%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(4) {
+    width: 15%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(5) {
+    width: 15%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(6) {
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+}
+
+.inputBox {
+	width: 50px;
+	text-align: center;
+}
+.order-info {
+	padding-top: 10px;
+}
+.showTotalPrice {
+	padding: 10px;
+	
+}
+
+#infoTableBox {
+	text-align: center;
+}
+.total {
+	
+	font-size: 25px;
+	font-weight: bold;
+	
+}
+
+#orderButton {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+    border: 1px solid gray;
+    width: auto;
+}
+#goMain {
+	background-color: white;
+    border: 1px solid gray;
+    width: auto;
+}
+
+#orderButton, #goMain {
+	padding-left: 10px;
+    padding-right: 10px;
+	border: 1px solid gray;
+    height: 40px;
+    width: auto;
+    font-size: 17px;
+}
+#deleteButton {
+	background-color: white;
+    border: 1px solid gray;
+    width: auto;
+}
+.sendOrder {
+	padding: 10px;
+}
+.buttonBox {
+	width: 30px;
+}
+
+
+

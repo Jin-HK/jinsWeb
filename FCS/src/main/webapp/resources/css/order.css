@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+.wrap {
+	
+	box-sizing: border-box;
+	width: auto;
+	margin-top: 10px;
+}
+
+.pt{
+	border: 1px solid lightgray;
+}
+
+#titleBold {
+	
+	font-weight: bold;
+	font-size: 17px;
+	
+}
+
+.h-title {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	font-size: 25px;
+}
+
+.orderProductList {
+	margin: auto;
+	width: auto;
+}
+
+.pt {
+	margin: auto;
+	width: 700px;
+}
+
+.pt th {
+	padding: 10px;
+	font-size: 20px;
+	background-color: black;
+	color: white;
+}
+
+.pt tbody td:nth-of-type(1) {
+	text-align: left;
+    width: 400px;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(2) {
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(3) {
+    width: 70px;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(4) {
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.infoTableBox {
+	margin: auto;
+	width: 700px;
+}
+
+#checkBox {
+    width: 500px;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.if-tb {
+	width: 700px;
+	margin: auto;
+}
+
+.if-tb tbody .colName {
+	width: 60px;
+	padding-left: 40px;
+    text-align: left;
+	vertical-align: middle;
+	font-size: 17px;
+	border-left: 1px solid white;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+.if-tb tbody .colValue {
+	padding-left: 20px;
+    text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+input[type="text"] {
+	padding-left: 10px;
+    height: 30px;
+}
+
+#oMobile1 {
+	height: 30px;
+	padding-left: 10px;
+}
+
+#findAddr {
+	padding-left: 10px;
+    height: 30px;
+    padding-right: 10px;
+}
+
+.button-row {
+	padding: 10px;
+	
+}
+
+#cancelOrder, #submitOrder {
+	
+	padding-left: 10px;
+    padding-right: 10px;
+	border: 1px solid gray;
+    height: 40px;
+    width: 130px;
+    font-size: 17px;
+}
+
+#cancelOrder {
+	
+    background-color: white;
+    border: 1px solid gray;
+    width: auto;
+}
+
+#submitOrder {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+    border: 1px solid gray;
+    width: auto;
+}
+
+.button-row {
+	padding: 10px;
+}
+
+.left-white-line {
+	border-left: 1px solid white;
+}
+.right-white-line {
+	border-right: 1px solid white;
+}
+
+.totalPrice {
+	text-align: right;
+    width: 70%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+}

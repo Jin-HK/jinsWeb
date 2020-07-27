@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.MemberDAO">
+	<select id="selectBymId" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT * FROM C_MEMBER WHERE MID = #{param1}
+	</select>
+	
+	<select id="selectBymEmail" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT * FROM C_MEMBER WHERE MEMAIL = #{param1}
+	</select>
+	
+	<insert id="signUpMember">
+		INSERT INTO C_MEMBER (MNO, MID, MNAME, MPW, MMOBILE1, MMOBILE2, MMOBILE3, MEMAIL, MBIRTH, MPOST, MADDR1, MADDR2, MADDR3, MVALIDATE, MREGDATE)
+		VALUES (C_MEMBER_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9}, #{param10}, #{param11}, #{param12}, '0', SYSDATE)
+	</insert>
+	
+	<select id="login" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT *
+		FROM C_MEMBER
+		WHERE MID = #{param1} AND MPW = #{param2} AND MVALIDATE = 0
+	</select>
+	
+	<select id="findPw" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT *
+		FROM C_MEMBER
+		WHERE MID = #{param1} AND MEMAIL = #{param2} AND MVALIDATE = 0
+	</select>
+	
+	<update id="updateMemberPw">
+		UPDATE C_MEMBER
+		SET MPW = #{param1}
+		WHERE MID = #{param2} AND MVALIDATE = 0
+	</update>
+	
+	<update id="updateMember">
+		UPDATE C_MEMBER
+		SET MNAME = #{param1}, MMOBILE1 = #{param2}, MMOBILE2 = #{param3}, MMOBILE3 = #{param4}, MEMAIL = #{param5}, MBIRTH = #{param6}, MPOST = #{param7}, MADDR1 = #{param8}, MADDR2 = #{param9}, MADDR3 = #{param10}
+		WHERE MID = #{param11} AND MVALIDATE = 0
+	</update>
+	
+	<select id="memberList" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT *
+		FROM C_MEMBER
+		WHERE MID NOT IN ('admin')
+	</select>
+	
+	<select id="memberViewByAdminPage" resultType="com.koreait.fcs.dto.MemberDTO">
+		SELECT *
+		FROM C_MEMBER
+		WHERE MNO = #{param1} AND MVALIDATE = 0
+	</select>
+	
+	<update id="deleteMember">
+		UPDATE C_MEMBER
+		SET MVALIDATE = '1', MEMAIL = MID
+		WHERE MNO = #{param1}
+	</update>
+	
+	<update id="updateByAdmin">
+		UPDATE C_MEMBER
+		SET MNAME = #{param1}
+		WHERE MID = #{param2}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

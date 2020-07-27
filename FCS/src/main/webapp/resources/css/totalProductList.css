@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+
+.wrap {
+	
+	box-sizing: border-box;
+	width: auto;
+	margin-top: 10px;
+}
+
+.pt{
+	border: 1px solid lightgray;
+}
+
+.h-title {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	font-size: 25px;
+}
+
+.productList {
+	margin: auto;
+	width: auto;
+}
+
+.pt {
+	margin: auto;
+	width: 1000px;
+}
+
+.pt th {
+	padding: 10px;
+	font-size: 17px;
+	background-color: black;
+	color: white;
+}
+
+.pt tbody td:nth-of-type(1) {
+	text-align: center;
+    width: 10%;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(2) {
+    width: 15%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(3) {
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(4) {
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.pt tbody td:nth-of-type(5) {
+    width: 7%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(6) {
+    width: 7%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(7) {
+    width: 7%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(8) {
+    width: 15%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(9) {
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+.pt tbody td:nth-of-type(10) {
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+
+

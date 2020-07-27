@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.OrderDAO">
+	
+	<select id="selectCartListBymId" resultType="com.koreait.fcs.dto.CartListDTO">
+		SELECT P.*, C.* 
+		FROM C_CART C inner join C_PRODUCT P on P.PNO = C.PNO where C.MID = #{param1} AND C.CVALIDATE = 0
+	</select>
+	
+	<select id="checkCartProduct" resultType="com.koreait.fcs.dto.CartDTO">
+		SELECT CARTNO, CVALIDATE, CSIZE, MID, PNO, CARTQUANTITY FROM C_CART WHERE MID = #{param1} AND CSIZE = #{param2} AND PNO = #{param3} AND CVALIDATE = 0
+	</select>
+	
+	<update id="updateCartQuantity" >
+		UPDATE C_CART SET CARTQUANTITY = CARTQUANTITY + #{param1} WHERE CARTNO = #{param2}
+	</update>
+	
+	<insert id="insertOrder">
+		INSERT INTO C_ORDER (ONO, MID, ONAME, OMOBILE1, OMOBILE2, OMOBILE3, OEMAIL, OPOST, OADDR1, OADDR2, OADDR3, ODATE, CARTNO)
+		VALUES (C_ORDER_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9}, #{param10}, SYSDATE, #{param11})
+	</insert>
+	
+	<update id="updateProductStock">
+		UPDATE C_PRODUCT SET
+		<choose>
+			<when test='param1.equals("S")'>
+				PSTOCK1 = PSTOCK1 - #{param2}
+			</when>
+			<when test='param1.equals("M")'>
+				PSTOCK2 = PSTOCK2 - #{param2}
+			</when>
+			<when test='param1.equals("L")'>
+				PSTOCK3 = PSTOCK3 - #{param2}
+			</when>
+		</choose>
+		WHERE PNO = #{param3}
+	</update>
+	
+	<insert id="insertOrderToCart">
+		INSERT INTO C_CART (CARTNO, CVALIDATE, CSIZE, MID, PNO, CARTQUANTITY)
+		VALUES (C_CART_SEQ.NEXTVAL, 0, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<update id="updateCartValidate">
+		UPDATE C_CART SET CVALIDATE = 1 WHERE CARTNO = #{param1}
+	</update>
+	
+	<select id="selectOrderDate" resultType="String">
+		SELECT DISTINCT TO_CHAR(ODATE, 'YYYY-MM-DD') FROM C_ORDER WHERE MID = #{param1} ORDER BY TO_CHAR(ODATE, 'YYYY-MM-DD') DESC
+	</select>
+
+	
+	<select id="selectMyOrderList" resultType="com.koreait.fcs.dto.OrderListDTO">
+		SELECT C.*, P.*, O.*
+		FROM C_CART C, C_PRODUCT P, C_ORDER O 
+		WHERE P.PNO = C.PNO 
+		AND O.CARTNO = C.CARTNO 
+		AND O.MID = #{param1} AND C.CVALIDATE = 1
+		ORDER BY O.ONO DESC
+	</select>
+	
+	<select id="selectTotalOrderList" resultType="com.koreait.fcs.dto.OrderListDTO">
+		SELECT C.*, P.*, O.*
+		FROM C_CART C, C_PRODUCT P, C_ORDER O 
+		WHERE P.PNO = C.PNO 
+		AND O.CARTNO = C.CARTNO 
+		AND C.CVALIDATE = 1
+		ORDER BY O.ONO DESC
+	</select>
+	
+</mapper>

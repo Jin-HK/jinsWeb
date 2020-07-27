@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+.wrap {
+	
+	box-sizing: border-box;
+	width: auto;
+	margin-top: 10px;
+}
+
+.prod-info {
+	
+	width: auto;
+}
+.infoTableBox {
+	width: auto;
+}
+.infoTable {
+	width: 600px;
+	margin: auto;
+}
+
+.if-tb {
+	width: 100%;
+	margin: auto;
+}
+
+#titleBold {
+	
+	font-weight: bold;
+	font-size: 17px;
+	
+}
+
+.h-title {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	font-size: 25px;
+}
+
+
+.if-tb tbody td:nth-of-type(1) {
+	text-align: left;
+    width: 180px;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.if-tb tbody td:nth-of-type(2) {
+    width: 300px;
+    text-align: left;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.colName {
+	width: 70px;
+	padding-left: 40px;
+    text-align: left;
+	vertical-align: middle;
+	font-size: 17px;
+	border-left: 1px solid white;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+.colValue {
+	padding-left: 20px;
+    text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+input[type="text"] {
+	padding-left: 10px;
+    height: 30px;
+}
+
+
+.button-row {
+	padding: 10px;
+	text-align: center;
+	
+}
+
+#updateButton, #cancelButton, #deleteButton {
+	
+	padding-left: 10px;
+    padding-right: 10px;
+	border: 1px solid gray;
+    height: 40px;
+    width: 130px;
+    font-size: 17px;
+}
+
+#select {
+	width: 150px;
+	text-align: center;
+}
+
+
+
+
+

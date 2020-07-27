@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.CartDAO">
+
+	<!-- 장바구니 LIST -->
+	<select id="selectBymId" resultType="com.koreait.fcs.dto.ProductDTO">
+		SELECT P.PNO, P.PNAME, P.PPRICE, P.PCATEGORY, P.PGENDER, P.PCOMPANY, P.PTHUMBNAIL, P.PFILENAME, P.PDESCRIPTION, P.PSTOCK1, P.PSTOCK2, P.PSTOCK3, C.CARTQUANTITY, C.CARTNO, C.CSIZE, C.CVALIDATE
+		FROM C_PRODUCT P, C_CART C
+		WHERE P.PNO = C.PNO
+		AND C.CVALIDATE = 0
+		AND C.MID = #{mId}
+	</select>
+	
+	<!-- 장바구니 INSERT -->
+	<insert id="cartInsert">
+		 INSERT INTO C_CART(CARTNO, MID, PNO, CSIZE, CVALIDATE, CARTQUANTITY)
+      	VALUES (C_CART_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, 0, #{param4})
+		
+	</insert>
+	
+	<!-- 장바구니 DELETE -->
+	<delete id="cartDelete">
+		DELETE FROM C_CART
+		WHERE CARTNO = #{cartNo}
+	</delete>
+
+	<!-- 수량 UP -->
+	<update id="quantityUp">
+		UPDATE C_CART
+		SET CARTQUANTITY = CARTQUANTITY + 1
+		WHERE CARTNO = #{cartNo}
+	</update>
+	
+	<!-- 수량 DOWN -->
+	<update id="quantityDown">
+		UPDATE C_CART
+		SET CARTQUANTITY = CARTQUANTITY - 1
+		WHERE CARTNO = #{cartNo}
+	</update>
+
+</mapper>

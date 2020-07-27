@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.CategoryDAO">
+	<insert id="insertCategory">
+		INSERT INTO C_CATEGORY (CNO, CNAME)
+		VALUES (#{param1}, #{param2})
+	</insert>
+	<update id="updateCategory">
+		UPDATE C_CATEGORY
+		SET CNAME = #{param2}
+		WHERE CNO = #{param1}
+	</update>
+	<delete id="deleteCategory">
+		DELETE
+		FROM C_CATEGORY
+		WHERE CNO = #{param1}
+	</delete>
+	<select id="selectCategoryList" resultType="com.koreait.fcs.dto.CategoryDTO">
+		SELECT CNO, CNAME
+		FROM C_CATEGORY
+		ORDER BY CNO
+	</select>
+	
+   <!-- 컨트롤러가 수정된 버젼의 select문 -->
+   <select id="selectProductList1" resultType="com.koreait.fcs.dto.ProductDTO">
+      SELECT PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE 
+         FROM C_PRODUCT WHERE
+         <choose>
+         <when test='param1.equals("pCompany")'>
+            PCOMPANY = #{param2}
+         </when>
+         <when test='param1.equals("pCategory")'>
+            PCATEGORY = #{param3}
+         </when>
+      </choose>
+      AND PGENDER = #{param4}
+      AND NOT (PSTOCK1 = 0 AND PSTOCK2 = 0 AND PSTOCK3 = 0)
+   </select>
+   
+   <select id="selectProductList2" resultType="com.koreait.fcs.dto.ProductDTO">
+      SELECT * FROM (SELECT ROWNUM AS RN, A.* FROM ((SELECT PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE 
+         FROM C_PRODUCT WHERE 
+         <choose>
+         <when test='param1.equals("pCompany")'>
+            PCOMPANY = #{param2}
+         </when>
+         <when test='param1.equals("pCategory")'>
+            PCATEGORY = #{param3}
+         </when>
+      </choose>
+         AND PGENDER = #{param4} ORDER BY PNO) A))
+         WHERE RN BETWEEN #{param5} AND #{param6} 
+      
+      
+   </select>
+
+	
+</mapper>

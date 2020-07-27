@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.fcs.dao.ProductDAO">
+	<insert id="insertProduct">
+		INSERT INTO C_PRODUCT (PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE)
+		VALUES (C_PRODUCT_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9}, #{param10}, #{param11}, SYSDATE)
+	</insert>
+	<insert id="insertProductWithNoThumbnail">
+		INSERT INTO C_PRODUCT (PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE)
+		VALUES (C_PRODUCT_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, '', #{param6}, #{param7}, #{param8}, #{param9}, #{param10}, SYSDATE)
+	</insert>
+	<insert id="insertProductWithNoDetailImage">
+		INSERT INTO C_PRODUCT (PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE)
+		VALUES (C_PRODUCT_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, '', #{param7}, #{param8}, #{param9}, #{param10}, SYSDATE)
+	</insert>
+	
+	<update id="updateProduct">
+		UPDATE C_PRODUCT
+		SET PNAME = #{param1}, PPRICE = #{param2}, PCATEGORY = #{param3}, PGENDER = #{param4}, PCOMPANY = #{param5}, PTHUMBNAIL = #{param6}, PFILENAME = #{param7}, PDESCRIPTION = #{param8}, PSTOCK1 = #{param9}, PSTOCK2 = #{param10}, PSTOCK3 = #{param11}
+		WHERE PNO = #{param12}
+	</update>
+	<update id="productUpdateWithNoImage">
+		UPDATE C_PRODUCT
+		SET PNAME = #{param1}, PPRICE = #{param2}, PCATEGORY = #{param3}, PGENDER = #{param4}, PCOMPANY = #{param5}, PTHUMBNAIL = '', PFILENAME = '', PDESCRIPTION = #{param6}, PSTOCK1 = #{param7}, PSTOCK2 = #{param8}, PSTOCK3 = #{param9}
+		WHERE PNO = #{param10}
+	</update>
+	<update id="productDetailImageUpdate">
+		UPDATE C_PRODUCT
+		SET PNAME = #{param1}, PPRICE = #{param2}, PCATEGORY = #{param3}, PGENDER = #{param4}, PCOMPANY = #{param5}, PTHUMBNAIL = '', PFILENAME = #{param6}, PDESCRIPTION = #{param7}, PSTOCK1 = #{param8}, PSTOCK2 = #{param9}, PSTOCK3 = #{param10}
+		WHERE PNO = #{param11}
+	</update>
+	<update id="productThumbnailUpdate">
+		UPDATE C_PRODUCT
+		SET PNAME = #{param1}, PPRICE = #{param2}, PCATEGORY = #{param3}, PGENDER = #{param4}, PCOMPANY = #{param5}, PTHUMBNAIL = #{param6}, PFILENAME = '', PDESCRIPTION = #{param7}, PSTOCK1 = #{param8}, PSTOCK2 = #{param9}, PSTOCK3 = #{param10}
+		WHERE PNO = #{param11}
+	</update>
+	
+	<update id="deleteProduct">
+		UPDATE C_PRODUCT SET PSTOCK1 = 0, PSTOCK2 = 0, PSTOCK3 = 0 
+		WHERE PNO = #{param1}
+	</update>
+	
+	<select id="selectNewProductList" resultType="com.koreait.fcs.dto.ProductDTO">
+		SELECT * FROM C_PRODUCT
+		WHERE NOT (PSTOCK1 = 0 AND PSTOCK2 = 0 AND PSTOCK3 = 0)
+		ORDER BY PNO DESC
+	</select>
+	
+	<select id="selectProductListByCategory" resultType="com.koreait.fcs.dto.ProductDTO">
+		SELECT * FROM C_PRODUCT
+		WHERE PCATEGORY = #{param1}
+	</select>
+	<select id="selectProductBypNo" resultType="com.koreait.fcs.dto.ProductDTO">
+		SELECT * FROM C_PRODUCT
+		WHERE PNO = #{pNo}
+	</select>
+	
+	<select id="selectProductDetail" resultType="com.koreait.fcs.dto.ProductDTO">
+      SELECT PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE 
+      FROM C_PRODUCT WHERE PNO = #{pNo}
+   </select>
+   
+   <select id="selectTotalProductList" resultType="com.koreait.fcs.dto.ProductDTO">
+	   	SELECT PNO, PNAME, PPRICE, PCATEGORY, PGENDER, PCOMPANY, PTHUMBNAIL, PFILENAME, PDESCRIPTION, PSTOCK1, PSTOCK2, PSTOCK3, PREGDATE
+	   	FROM C_PRODUCT ORDER BY PNO
+   </select>
+   
+   <update id="updateProductQuantity">
+   		UPDATE C_PRODUCT SET PSTOCK1 = #{param1}, PSTOCK2 = #{param2}, PSTOCK3 = #{param3} WHERE PNO = #{param4}
+   </update>
+</mapper>
