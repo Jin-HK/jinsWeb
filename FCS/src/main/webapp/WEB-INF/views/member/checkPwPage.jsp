@@ -28,7 +28,7 @@
 		}
 	}
 </script>
-<div class="visual"><img src="https://ifh.cc/g/aFF3mM.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 
    <main>

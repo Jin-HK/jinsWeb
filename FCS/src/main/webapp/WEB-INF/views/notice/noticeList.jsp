@@ -14,7 +14,7 @@ td:nth-of-type(2){width: 300px;	 text-align: center;}
 td:nth-of-type(3){width: 150px;}
 </style>
 
-<div class="visual"><img src="resources/images/qna.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 
 
 <script type="text/javascript">

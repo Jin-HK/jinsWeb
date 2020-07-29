@@ -6,7 +6,7 @@
 <jsp:include page="../template/header.jsp" />
 
 
-<div class="visual"><img src="resources/images/qna.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 
   <style type="text/css">

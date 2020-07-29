@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../template/header.jsp" />
 
-<div class="visual"><img src="resources/images/1.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 <style>
 	td:nth-of-type(2) {

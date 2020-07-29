@@ -7,7 +7,7 @@
 </jsp:include>
 <link href="resources/css/cartList.css" media="all" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="visual"><img src="resources/images/beads.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 
 	<body>

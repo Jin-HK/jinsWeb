@@ -16,7 +16,7 @@ td{ border:1px solid black; }
 .btn3 { display: inline-block; width: 120px; height:45px; background: #000; text-align: center; line-height: 45px; color:#fff; font-size: 13px; border: 1px solid black; }
    .text-box{ width: 350; height: 50; font-size: 20px;}    
 </style>
-<div class="visual"><img src="resources/images/qna.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 
 <script type="text/javascript">
 	function fn_insertBoard(f) {

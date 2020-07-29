@@ -12,7 +12,7 @@
 	tbody tr:nth-child(1) { background-color: black; height: 60px; color: white; font-size: 40px;}
 </style>
 
-<div class="visual"><img src="resources/images/2.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 <main>
 	  

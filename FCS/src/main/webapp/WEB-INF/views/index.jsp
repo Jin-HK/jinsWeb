@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <jsp:include page="./template/header.jsp" />
 
-<div class="visual"><img src="resources/images/bbwhite.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 <!-- 헤더영역 끝 -->
 <!-- 본문영역 -->
@@ -18,7 +18,7 @@
 				<c:forEach var="pDTO" items="${list}" begin="0" end="7" step="1">
 				<li>
 					<a href="productDetailViewPage?pNo=${pDTO.pNo }">
-						<em><img src="${pageContext.request.contextPath}/resources/storage/${pDTO.pThumbnail}" alt="${pDTO.pThumbnail}"></em>
+						<em style="height:190px"><img src="${pageContext.request.contextPath}/resources/storage/${pDTO.pThumbnail}" alt="${pDTO.pThumbnail}"></em>
 						<div>
 							<h3>${pDTO.pName}</h3>
 							<p>
@@ -26,7 +26,7 @@
 								
 							</p>
 							
-							<div>${pDTO.pPrice}원</div>
+							<div><fmt:formatNumber value="${pDTO.pPrice }" pattern="#,##0" />원</div>
 						</div>
 					</a>
 				</li>

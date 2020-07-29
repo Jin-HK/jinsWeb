@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:include page="../template/header.jsp" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -88,12 +89,12 @@ input[type="radio"] { vertical-align:text-bottom;}
       position: fixed;
       right: 20px;
       width: 150px;
-      height: 250px;
+      height: 150px;
       text-align: center;
-        border: 1px solid black;
-   
+      border: 1px solid #ebebe0;
+      background: #ebebe0;
+      
    }
-
         .asd{
            height:auto;
            width:auto;         
@@ -101,7 +102,6 @@ input[type="radio"] { vertical-align:text-bottom;}
             background: white;
          border: white solid 1px;
         }
-        
         
       .asdf:active{
       border: black solid 1px;
@@ -122,9 +122,6 @@ input[type="radio"] { vertical-align:text-bottom;}
 
 td:nth-of-type(1){
       width:250px;
-      
-      
-      
    }
    #thumbnail{
    	width: 350px;
@@ -143,7 +140,7 @@ td:nth-of-type(1){
 	
 </style>
 
-<div class="visual"><img src="resources/images/beads.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 
    
@@ -279,7 +276,7 @@ td:nth-of-type(1){
 		</tr>
 			<tr>
                      <td>가격</td>
-                     <td>${pDTO.pPrice }원</td>
+                     <td><fmt:formatNumber value="${pDTO.pPrice }" pattern="#,##0" />원</td>
                   </tr>
                   <tr>
                      <td>브랜드</td>
@@ -340,7 +337,7 @@ td:nth-of-type(1){
                   </tr>
                   <tr>
                   	<td colspan="2" style="font-size: 20px;">
-                  		<br>총 금액 : <span id="total">${pDTO.pPrice }원</span><br>
+                  		<br>총 금액 : <span id="total"><fmt:formatNumber value="${pDTO.pPrice }" pattern="#,##0" />원</span><br>
                   	</td>
                   </tr>
                   <tr>
@@ -369,7 +366,7 @@ td:nth-of-type(1){
        <div class="side-menu">
             <table>
                 <tr>
-                    <td ><a class="asdf" href="#header">TOP</a></td>
+                    <td style="padding-top:10px"><a class="asdf" href="#header">TOP</a></td>
                 </tr>
                 <%-- <tr>
                     <td><br><a href='productListPage?pCategory=${pDTO.pCategory}&page=${page}'>목록으로 이동</a></td>                  

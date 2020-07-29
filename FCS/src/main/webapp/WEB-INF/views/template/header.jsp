@@ -76,7 +76,7 @@
 		</div>
 		<h2 class="hide">회원</h2>
 		<c:if test="${empty loginDTO }">
-			<ul style="height: 0px; margin:0px;'">
+			<ul style="height: 0px; margin:0px; padding-top: 10px; padding-left: 10px;">
 				<li style="color: white;">FCS</li>
 				<li ><a href="loginPage" style="color: white;">LOGIN</a></li>
 				<li><a href="insertPage" style="color: white;">JOIN</a></li>
@@ -84,7 +84,7 @@
 		</c:if>
 	<c:if test="${not empty loginDTO }">
 		<c:if test="${loginDTO.mId ne 'admin' }">
-			<ul style="height: 0px; margin:0px;">
+			<ul style="height: 0px; margin:0px; padding-top: 10px; padding-left: 10px;">
 				<li style="text-align: center; color: white;" >${loginDTO.mName } 님</li>
 				<li style="color: white;"><a class="qwer1" href="logout" style="color: white;">로그아웃</a></li>
 				<li style="color: white;"><a class="qwer2" href="myPage" style="color: white;">마이페이지</a></li>
@@ -92,7 +92,7 @@
 			</ul>
 		</c:if>
 		<c:if test="${loginDTO.mId eq 'admin' }">
-			<ul style="height: 0px; margin:0px;">
+			<ul style="height: 0px; margin:0px; padding-top: 10px; padding-left: 10px;">
 				<li style="color: white;">${loginDTO.mName } 님</li>
 				<li style="color: white;"><a href="logout" style="color: white;">로그아웃</a></li>
 				<li style="color: white;"><a href="adminPage" style="color: white;">관리 페이지</a></li>

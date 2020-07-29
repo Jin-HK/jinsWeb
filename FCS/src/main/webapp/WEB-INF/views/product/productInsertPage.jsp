@@ -41,7 +41,7 @@
     .h22 { position: relative; padding: 55px 0 53px; font-size: 36px; color:#222; line-height: 100%; text-align: center; } 
 
 </style>
-<div class="visual"><img src="resources/images/beads.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 <body>
 <script type="text/javascript">

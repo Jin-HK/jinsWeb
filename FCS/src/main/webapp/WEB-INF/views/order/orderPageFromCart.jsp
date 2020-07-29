@@ -7,7 +7,7 @@
    <jsp:param value="Order" name="title" />
 </jsp:include>
 <link href="resources/css/order.css" media="all" rel="stylesheet" type="text/css"/>
-<div class="visual"><img src="resources/images/1.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

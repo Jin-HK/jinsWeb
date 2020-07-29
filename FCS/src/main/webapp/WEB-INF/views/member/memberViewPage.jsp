@@ -4,7 +4,7 @@
 <jsp:include page="../template/header.jsp">
 	<jsp:param value="회원정보 수정" name="title" />
 </jsp:include>
-<div class="visual"><img src="resources/images/2.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 <style>
 
 	table{

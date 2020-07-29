@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link href="resources/css/orderList.css" media="all" rel="stylesheet" type="text/css"/>
-<div class="visual"><img src="resources/images/1.jpg" alt=""></div>
+<div class="visual"><img src="resources/images/black.png" alt=""></div>
 <style>
 
 .wrap {
