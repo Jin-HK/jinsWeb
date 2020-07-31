@@ -98,7 +98,7 @@
 <body>
 
 <div class="wrap">
-	<div class="head"><h1>${mName }님의 주문 리스트</h1></div>
+	<div class="head"><h1>${loginDTO.mName }님의 주문 리스트</h1></div>
 	<div class="main">
 		<div class="contents">		
 			<c:forEach var="orderDate" items="${oDatelist}">

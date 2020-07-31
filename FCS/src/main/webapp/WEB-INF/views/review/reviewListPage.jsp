@@ -151,7 +151,7 @@ jQuery(document).ready(function () {
 						<c:if test="${not empty list2 }">
 							<c:forEach var="rDTO" items="${list2 }">
 								<tr style="border-bottom: 1px solid lightgray;">
-									<td><img alt="${rDTO.rFilename }" src="${pageContext.request.contextPath }/resources/storage/${rDTO.rFilename }"></td>
+									<td><img "style=width:200px; height=200px;" alt="${rDTO.rFilename }" src="${pageContext.request.contextPath }/resources/storage/${rDTO.rFilename }"></td>
 									<td>
 										<span id="smallSize" style="font-weight: bold;">${rDTO.rTitle }</span><br><br/>
 										<span id="smallSize">${rDTO.rContent }</span>

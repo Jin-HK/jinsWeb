@@ -28,24 +28,24 @@
 	}
 </script>
 <script>
-$(document).ready(function(){
-	$('.starRev span').click(function(){
-		  $(this).parent().children('span').removeClass('on');
-		  $(this).addClass('on').prevAll('span').addClass('on');
-		  document.getElementById("rScore").innerHTML = '';
-		  return false;
-		});
-});
-jQuery(document).ready(function () {
-    $('.rb-rating').rating({
-        'showCaption': false,
-        'stars': '5',
-        'min': '0',
-        'max': '5',
-        'step': '1',
-        'size': 'xs',
-    });
-});
+	$(document).ready(function(){
+		$('.starRev span').click(function(){
+			  $(this).parent().children('span').removeClass('on');
+			  $(this).addClass('on').prevAll('span').addClass('on');
+			  document.getElementById("rScore").innerHTML = '';
+			  return false;
+			});
+	});
+	jQuery(document).ready(function () {
+	    $('.rb-rating').rating({
+	        'showCaption': false,
+	        'stars': '5',
+	        'min': '0',
+	        'max': '5',
+	        'step': '1',
+	        'size': 'xs',
+	    });
+	});
 </script>
 <style type="text/css">
 	* {
@@ -57,7 +57,29 @@ jQuery(document).ready(function () {
 		width: 100%;
 		margin: auto;
 	}
-	tfoot td { text-align: center; }
+	td {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		border: 1px solid lightgray;
+	}
+	.colName {
+		width: 30%;
+		text-align: right;
+		border-left: 1px solid white;
+		padding-right: 40px;
+	}
+	.colValue {
+		border-right: 1px solid white;
+	}
+	tr {
+		height: 
+	}
+	tfoot td { 
+		text-align: center; 
+		border-left: 1px solid white;
+		border-right: 1px solid white;
+	}
 </style>
 <div class="visual"><img src="resources/images/black.png" alt=""></div>
 </header>
@@ -67,27 +89,27 @@ jQuery(document).ready(function () {
 		<form method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="pNo" value="${pNo }" />
 		<input type="hidden" name="mId" value="${loginDTO.mId }"/><br/>
-		<table>
+		<table style="height: 500px;">
 			<tbody>
 			<tr>
-				<td>별점</td>
-				<td><input required class="rb-rating" type="text" value="1" title="" name="rScore"></td>
+				<td class="colName">별점</td>
+				<td class="colValue"><input required class="rb-rating" type="text" value="1" title="" name="rScore"></td>
 			</tr>
 			<tr>
-				<td>작성자</td>
-				<td>${loginDTO.mId }</td>
+				<td class="colName">작성자</td>
+				<td class="colValue">${loginDTO.mId }</td>
 			</tr>
 			<tr>
-				<td>제목</td>
-				<td><input type="text" name="rTitle"></td>
+				<td class="colName">제목</td>
+				<td class="colValue"><input type="text" name="rTitle"></td>
 			</tr>
 			<tr>	
-				<td>상품평</td>
-				<td><textarea name="rContent" rows="2" cols="50"></textarea></td>
+				<td class="colName">상품평</td>
+				<td class="colValue"><textarea name="rContent" rows="2" cols="50"></textarea></td>
 			</tr>
 			<tr>
-				<td>사진첨부</td>
-				<td><input type="file" name="file"></td>
+				<td class="colName">사진첨부</td>
+				<td class="colValue"><input type="file" name="file"></td>
 			</tr>
 			</tbody>
 			<tfoot>
