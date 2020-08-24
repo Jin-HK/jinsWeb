@@ -21,7 +21,7 @@
 			f.action = 'insertReviewWithImage';
 		}
 		if(f.rScore.value == ''){
-			alert('별점을 입력하세요');
+			alert('별점을 선택해주세요');
 			return;
 		}
 		f.submit();
