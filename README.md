@@ -1,4 +1,4 @@
-# 김형진_SRPING-FRAMEWORK 기반 쇼핑몰
+# 김형진_SPRING-FRAMEWORK 기반 쇼핑몰
 
 ## 주요 담당 기능
 
